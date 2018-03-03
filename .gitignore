@@ -1,0 +1,13 @@
+node_modules/
+front_end/node_modules
+.env
+node_modules/.yarn-integrity
+package-lock.json
+yarn.lock
+*.lock
+
+*.lock
+
+yarn.lock
+
+yarn.lock
