@@ -1,0 +1,17 @@
+.Wrapper {
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.inputWrapper {
+  max-width:980px;
+}
+
+input {
+  padding:10px;
+  outline:none;
+  min-width:25vw;
+  font-size:20px;
+}

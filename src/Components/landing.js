@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react"
 import { connect } from "react-redux"
 import getGitHubData from "../actionCreators"
+import "./Landing.css"
 
 class Landing extends PureComponent {
   constructor(props) {
@@ -11,28 +12,33 @@ class Landing extends PureComponent {
   }
   setInputValueAndFindNameInData(searchForName) {
     this.setState({ searchForName }, () => {
-      // Coming up.
+      if(this.state.searchForName.length){
+       this.props.handleGitHubData(this.state.searchForName)
+      }
     })
   }
   componentDidMount() {
-    this.props.handleGitHubData("https://api.github.com/search/users")
+
   }
   render () {
+    console.log(this.props.data);
     return (
-      <div>
-        <input
-          value={ this.state.searchTerm }
-          onChange={(e) => this.setInputValueAndFindNameInData(e.target.value)}
-        />
+      <div className="Wrapper">
+        <div className="inputWrapper">
+          <input
+            value={ this.state.searchTerm }
+            onChange={(e) => this.setInputValueAndFindNameInData(e.target.value)}
+          />
+        </div>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => ({ searchTerm:state.searchTerm });
+const mapStateToProps = (state) => ({data:state.data});
 const mapDispatchToProps = (dispatch) => ({
-  handleGitHubData(url) {
-    dispatch(getGitHubData(url))
+  handleGitHubData(userName) {
+    dispatch(getGitHubData(userName))
   }
 })
 
